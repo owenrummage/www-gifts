@@ -43,6 +43,7 @@
 	},
 	"dependencies": {
 		"@auth/sveltekit": "^1.11.1",
+		"@prisma/adapter-pg": "^6.18.0",
 		"@prisma/client": "^6.18.0",
 		"prisma": "^6.18.0"
 	}
