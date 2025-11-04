@@ -6,16 +6,16 @@ import { fail, redirect } from '@sveltejs/kit';
 export const load = async ({ parent }) => {
 	const { session } = await parent();
 
-	logger.warning(`Loading admin page for ${session?.user?.email}`, {
-		user: session?.user,
-		type: 'admin.view'
-	});
-
 	if (!session) return redirect(307, '/');
 	if (!session.user) return redirect(307, '/');
 	if (!session.user.email) return redirect(307, '/');
 
 	if (!ALLOWED_USERS.split(',').includes(session.user?.email)) return redirect(307, '/');
+
+	logger.warning(`Loading admin page for ${session?.user?.email}`, {
+		user: session?.user,
+		type: 'admin.view'
+	});
 
 	return {
 		gifts: await prisma.gift.findMany({
