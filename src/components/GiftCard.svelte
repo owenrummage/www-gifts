@@ -3,12 +3,14 @@
 	import type { Gift } from '../generated/prisma/browser';
 	import { page } from '$app/stores';
 	import { enhance } from '$app/forms';
+	import { redirect } from '@sveltejs/kit';
 
 	export let gift: Gift;
 </script>
 
 <div
 	class:hidden={gift.reservedBy && gift.reservedBy !== $page.data?.session?.user?.email}
+	on:click={() => redirect(307, gift.link)}
 	class="flex h-full flex-col rounded border border-neutral-800 bg-neutral-900 p-4 shadow-sm"
 >
 	<img src={gift.image} alt="Product" class="mb-2 min-h-0 w-full flex-1 rounded object-cover" />
