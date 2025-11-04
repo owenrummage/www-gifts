@@ -29,8 +29,11 @@ export const load = async ({ parent }) => {
 export const actions = {
 	async delete({ request, locals }) {
 		const session = await locals.auth();
-		if (!session || session.user?.email !== 'owenrumage@gmail.com')
-			return fail(403, 'Unauthorized');
+		if (!session) return redirect(307, '/');
+		if (!session.user) return redirect(307, '/');
+		if (!session.user.email) return redirect(307, '/');
+
+		if (!ALLOWED_USERS.split(',').includes(session.user?.email)) return redirect(307, '/');
 
 		const formData = await request.formData();
 		const id = formData.get('id');
@@ -46,8 +49,11 @@ export const actions = {
 	},
 	async create({ request, locals }) {
 		const session = await locals.auth();
-		if (!session || session.user?.email !== 'owenrumage@gmail.com')
-			return fail(403, 'Unauthorized');
+		if (!session) return redirect(307, '/');
+		if (!session.user) return redirect(307, '/');
+		if (!session.user.email) return redirect(307, '/');
+
+		if (!ALLOWED_USERS.split(',').includes(session.user?.email)) return redirect(307, '/');
 
 		const formData = await request.formData();
 		const name = formData.get('name');
