@@ -4,7 +4,9 @@
 
 	let { children } = $props();
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 
+	injectAnalytics();
 	injectSpeedInsights();
 </script>
 
