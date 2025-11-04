@@ -12,6 +12,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<title>Owen's Wishlist</title>
 </svelte:head>
 
 <div class="p-8">
