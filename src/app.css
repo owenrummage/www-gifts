@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+:root {
+	background-color: black;
+	color: white;
+	hr {
+		border-color: white;
+	}
+}
