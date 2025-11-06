@@ -8,12 +8,13 @@
 	export let gift: Gift;
 </script>
 
-<a
-	href={gift.link}
+<div
 	class:hidden={gift.reservedBy && gift.reservedBy !== $page.data?.session?.user?.email}
 	class="flex h-full flex-col rounded border border-neutral-800 bg-neutral-900 p-4 shadow-sm"
 >
-	<img src={gift.image} alt="Product" class="mb-2 min-h-0 w-full flex-1 rounded object-cover" />
+	<a href={gift.link}>
+		<img src={gift.image} alt="Product" class="mb-2 min-h-0 w-full flex-1 rounded object-cover" />
+	</a>
 	<div class="flex justify-between">
 		<h1 class="mb-2 text-xl font-semibold">{gift.name}</h1>
 		<span class="text-lg font-bold">${gift.price}</span>
@@ -51,4 +52,4 @@
 			Sign In to Reserve Gift
 		</button>
 	{/if}
-</a>
+</div>
